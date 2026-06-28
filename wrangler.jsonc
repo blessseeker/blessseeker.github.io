@@ -1,4 +1,8 @@
 {
   "name": "kamal-portfolio",
-  "pages_build_output_dir": "build"
+  "compatibility_date": "2026-06-28",
+  "pages_build_output_dir": "build",
+  "assets": {
+    "directory": "./build"
+  }
 }
