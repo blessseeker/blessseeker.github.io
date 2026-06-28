@@ -88,7 +88,14 @@ export const projects = [
     alt: 'Minimal top-down desk setup with a keyboard, notebook, mug, and monochrome lighting.',
     description:
       'A Telegram bot that uses AI to provide smart responses, automate tasks, and integrate with external services for enhanced user interaction and productivity.',
-    tags: ['FastAPI', 'PostgreSQL', 'SvelteKit', 'Telegram Bot API', 'OpenAI API', 'AI Chat Bot'],
+    tags: [
+      'FastAPI',
+      'PostgreSQL',
+      'SvelteKit',
+      'Telegram Bot API',
+      'OpenAI API',
+      'AI Chat Bot'
+    ],
     href: null
   }
 ];

@@ -20,9 +20,9 @@
     </p>
     <div class="hero-actions">
       <a class="button button-primary" href="#projects">View Projects</a>
-      <button class="button button-secondary" type="button" disabled
+      <!-- <button class="button button-secondary" type="button" disabled
         >Download Resume</button
-      >
+      > -->
     </div>
   </div>
 </section>
