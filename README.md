@@ -55,7 +55,8 @@ npm run check    # Svelte diagnostics
 npm run lint     # Prettier formatting check
 npm run build    # Static production build to build/
 npm run preview  # Preview production build locally
-npm run deploy   # Deploy build/ to Cloudflare Pages with Wrangler
+npm run deploy   # No-op for Cloudflare Pages Git deploy command fields
+npm run deploy:direct # Deploy build/ to Cloudflare Pages with Wrangler
 ```
 
 ## Deployment
@@ -68,16 +69,19 @@ Recommended Cloudflare Pages Git settings:
 Production branch: master
 Build command: npm run build
 Build output directory: build
+Deploy command: npm run deploy
 ```
 
-The static adapter writes prerendered pages and assets to `build/`. The Cloudflare config in `wrangler.jsonc` also points to `build/` for direct Pages deploys.
+The static adapter writes prerendered pages and assets to `build/`. With Git integration, Cloudflare Pages deploys that output automatically after the build finishes. The `npm run deploy` command is intentionally a no-op for dashboards that require a non-empty deploy command.
 
 For direct Wrangler deployment:
 
 ```bash
 npm run build
-npm run deploy
+npm run deploy:direct
 ```
+
+Direct Wrangler deployment requires a `CLOUDFLARE_API_TOKEN` with permission to deploy Cloudflare Pages projects in the target account.
 
 ## Updating Content
 
