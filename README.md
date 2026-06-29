@@ -1,13 +1,13 @@
 # Kamaludin Khoir Portfolio
 
-Personal portfolio site for Kamaludin Khoir, built with SvelteKit and exported as a static site for Cloudflare Pages.
+Personal portfolio site for Kamaludin Khoir, built with SvelteKit and deployed to Cloudflare Workers.
 
 ## Tech Stack
 
 - SvelteKit
 - Vite
-- Static adapter (`@sveltejs/adapter-static`)
-- Cloudflare Pages / Wrangler
+- Cloudflare adapter (`@sveltejs/adapter-cloudflare`)
+- Cloudflare Workers / Wrangler
 - Plain CSS with componentized Svelte sections
 
 ## Project Structure
@@ -53,34 +53,33 @@ http://localhost:5173/portfolio/
 ```bash
 npm run check    # Svelte diagnostics
 npm run lint     # Prettier formatting check
-npm run build    # Static production build to build/
+npm run build    # Production build for Cloudflare Workers
 npm run preview  # Preview production build locally
-npm run deploy   # Deploy build/ to Cloudflare Pages with Wrangler
+npm run deploy   # Build and deploy to Cloudflare Workers
+npm run deploy:cloudflare # Deploy existing Worker build output
 ```
 
 ## Deployment
 
-This project is configured for static deployment to Cloudflare Pages.
+This project is configured for Cloudflare Workers deployment through Wrangler.
 
-Recommended Cloudflare Pages Git settings:
+Recommended Cloudflare build settings:
 
 ```text
 Production branch: master
 Build command: npm run build
-Build output directory: build
-Deploy command: npm run deploy
+Deploy command: npm run deploy:cloudflare
 ```
 
-The static adapter writes prerendered pages and assets to `build/`. The deploy command uploads that directory to the `kamal-portfolio` Cloudflare Pages project.
+`@sveltejs/adapter-cloudflare` writes Worker output to `.svelte-kit/cloudflare/`. `wrangler deploy` publishes the Worker and its static assets using `wrangler.jsonc`.
 
-For local or direct Wrangler deployment:
+For local deployment:
 
 ```bash
-npm run build
 npm run deploy
 ```
 
-Wrangler deployment requires `CLOUDFLARE_API_TOKEN` to be set with permission to deploy Cloudflare Pages projects in the target account. If deployment fails with `Authentication error [code: 10000]`, create or update the token in Cloudflare with Pages edit/deploy access for the account that owns `kamal-portfolio`.
+Wrangler deployment requires `CLOUDFLARE_API_TOKEN` to be set with permission to deploy Cloudflare Workers in the target account.
 
 ## Updating Content
 
@@ -118,7 +117,6 @@ npm run build
 Confirm the build output contains:
 
 ```text
-build/index.html
-build/portfolio/index.html
-build/portfolio/
+.svelte-kit/cloudflare/_worker.js
+.svelte-kit/cloudflare/portfolio/
 ```

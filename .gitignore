@@ -3,6 +3,7 @@ node_modules/
 
 # SvelteKit and Vite output
 .svelte-kit/
+.wrangler/
 build/
 dist/
 .vite/

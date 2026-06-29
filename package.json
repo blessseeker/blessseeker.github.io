@@ -9,10 +9,11 @@
     "preview": "vite preview --host 0.0.0.0",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "lint": "prettier --check .",
-    "deploy": "wrangler pages deploy build --project-name=kamal-portfolio"
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:cloudflare": "wrangler deploy"
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/adapter-cloudflare": "^7.2.9",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "prettier": "^3.3.0",
