@@ -55,8 +55,7 @@ npm run check    # Svelte diagnostics
 npm run lint     # Prettier formatting check
 npm run build    # Static production build to build/
 npm run preview  # Preview production build locally
-npm run deploy   # No-op for Cloudflare Pages Git deploy command fields
-npm run deploy:direct # Deploy build/ to Cloudflare Pages with Wrangler
+npm run deploy   # Deploy build/ to Cloudflare Pages with Wrangler
 ```
 
 ## Deployment
@@ -72,16 +71,16 @@ Build output directory: build
 Deploy command: npm run deploy
 ```
 
-The static adapter writes prerendered pages and assets to `build/`. With Git integration, Cloudflare Pages deploys that output automatically after the build finishes. The `npm run deploy` command is intentionally a no-op for dashboards that require a non-empty deploy command.
+The static adapter writes prerendered pages and assets to `build/`. The deploy command uploads that directory to the `kamal-portfolio` Cloudflare Pages project.
 
-For direct Wrangler deployment:
+For local or direct Wrangler deployment:
 
 ```bash
 npm run build
-npm run deploy:direct
+npm run deploy
 ```
 
-Direct Wrangler deployment requires a `CLOUDFLARE_API_TOKEN` with permission to deploy Cloudflare Pages projects in the target account.
+Wrangler deployment requires `CLOUDFLARE_API_TOKEN` to be set with permission to deploy Cloudflare Pages projects in the target account. If deployment fails with `Authentication error [code: 10000]`, create or update the token in Cloudflare with Pages edit/deploy access for the account that owns `kamal-portfolio`.
 
 ## Updating Content
 
@@ -123,4 +122,3 @@ build/index.html
 build/portfolio/index.html
 build/portfolio/
 ```
-
